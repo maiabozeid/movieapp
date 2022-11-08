@@ -19,19 +19,14 @@ class MyThemeData {
       scaffoldBackgroundColor: Colors.black,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           selectedItemColor: Colors.yellow, unselectedItemColor: Colors.white),
-      textTheme: TextTheme(
-        displayMedium: TextStyle(
+
+      textTheme: TextTheme(displayMedium: TextStyle(
             fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500),
-          titleSmall: TextStyle(
-            fontSize: 13,
-            color: Colors.grey,
+          titleSmall: TextStyle(fontSize: 13, color: Colors.grey,
           ),
-          bodyMedium: TextStyle(
-              fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-          bodySmall: TextStyle(
-            fontSize: 10,
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          bodySmall: TextStyle(fontSize: 10,
             color: Colors.white,
           ),
-          bodyLarge: TextStyle(
-              fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold)));
+          bodyLarge: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold)));
 }

@@ -26,6 +26,7 @@ class HomeMovieScreen extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(color: MyThemeData.lightBlack,),);
               }
+
             var popularMovie = snapshot.data;
          return CarouselSlider(
              items: popularMovie?.results?.map((result){

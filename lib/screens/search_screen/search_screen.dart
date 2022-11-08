@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/models/SearchRespnse.dart';
 import 'package:movies_app/screens/search_screen/search_widget.dart';
-import 'package:movies_app/themes/themes.dart';
-
 import '../../apiManager/api_manager.dart';
 
 class SearchDelegateScreen extends SearchDelegate {
