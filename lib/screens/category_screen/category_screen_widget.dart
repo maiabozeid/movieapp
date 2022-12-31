@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/CategoryResponse.dart';
+import 'package:movies_app/models/categoryResponse.dart';
 import 'package:movies_app/screens/category_list_screen/category_list_screen.dart';
 
 class CategoryScreenWidget extends StatelessWidget {

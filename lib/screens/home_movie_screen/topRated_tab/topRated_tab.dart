@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/apiManager/api_manager.dart';
-import 'package:movies_app/models/TopRatedResponse.dart';
+import 'package:movies_app/models/topRatedResponse.dart';
 import 'package:movies_app/screens/home_movie_screen/topRated_tab/topRated_tab_widget.dart';
-import 'package:movies_app/themes/themes.dart';
+
+import '../../../api_manager/api_manager.dart';
 
 class TopRatedTab extends StatelessWidget {
   const TopRatedTab({Key? key}) : super(key: key);

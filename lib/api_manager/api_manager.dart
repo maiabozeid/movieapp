@@ -1,18 +1,22 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movies_app/models/CategoryResponse.dart';
-import 'package:movies_app/models/LikeMoviesResponse.dart';
-import 'package:movies_app/models/PopularResponse.dart';
-import 'package:movies_app/models/SearchRespnse.dart';
-import 'package:movies_app/models/TopRatedResponse.dart';
-import '../models/CategoryListResponse.dart';
+
+import 'package:movies_app/models/categoryResponse.dart';
+import 'package:movies_app/models/likeMoviesResponse.dart';
+import 'package:movies_app/models/now_playing.dart';
+import 'package:movies_app/models/searchRespnse.dart';
+import 'package:movies_app/models/topRatedResponse.dart';
+import '../constant/api_constant.dart';
+
+import '../models/CastModel2.dart';
+import '../models/categoryListResponse.dart';
+import '../models/now_playing.dart';
 
 class ApiManager {
-  static const String baseUrl = 'api.themoviedb.org';
-  static const String apiKey = 'a6c404179ede61ad21d79677a7366c47';
+
 
   static Future<TopRatedResponse> topRated() async {
-    var uri = Uri.https(baseUrl, '/3/movie/top_rated', {'api_key': apiKey});
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/movie/top_rated', {'api_key': ApiConstant.apiKey});
     var response = await http.get(uri);
     if (response.statusCode == 200) {
       var responseBody = response.body;
@@ -22,20 +26,20 @@ class ApiManager {
     throw Exception('error');
   }
 
-  static Future<PopularResponse> popularMovieData() async {
-    var uri = Uri.https(baseUrl, '/3/movie/popular', {'api_key': apiKey});
+  static Future<NowPlaying> nowPlaying() async {
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/movie/now_playing', {'api_key': ApiConstant.apiKey});
     var response = await http.get(uri);
     if (response.statusCode == 200) {
       var responseBody = response.body;
       var json = jsonDecode(responseBody);
-      return PopularResponse.fromJson(json);
+      return NowPlaying.fromJson(json);
     }
     throw Exception('error');
   }
 
   static Future<LikeMoviesResponse> likeMovies(int movieId) async {
-    var uri = Uri.https(baseUrl, '/3/movie/$movieId/similar',
-        {'api_key': apiKey, 'movie_id': ''});
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/movie/$movieId/similar',
+        {'api_key':ApiConstant.apiKey, 'movie_id': ''});
     var response = await http.get(uri);
     if (response.statusCode == 200) {
       var responseBody = response.body;
@@ -47,7 +51,7 @@ class ApiManager {
 
   static Future<SearchResponse> searchMovie(String query) async {
     var uri = Uri.https(
-        baseUrl, '/3/search/movie', {'api_key': apiKey, 'query': query});
+        ApiConstant.baseUrl, '/3/search/movie', {'api_key': ApiConstant.apiKey, 'query': query});
     var response = await http.get(uri);
     if (response.statusCode == 200) {
       var responseBody = response.body;
@@ -58,8 +62,8 @@ class ApiManager {
   }
 
   static Future<CategoryResponse> movieCategory() async {
-    var uri = Uri.https(baseUrl, '/3/genre/movie/list', {
-      'api_key': apiKey,
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/genre/movie/list', {
+      'api_key': ApiConstant.apiKey,
     });
     var response = await http.get(uri);
     if (response.statusCode == 200) {
@@ -71,8 +75,8 @@ class ApiManager {
   }
 
   static Future<CategoryListResponse> categoryList(num catId) async {
-    var uri = Uri.https(baseUrl, '/3/discover/movie', {
-      'api_key': apiKey,
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/discover/movie', {
+      'api_key': ApiConstant.apiKey,
       'with_genres': catId.toString(),
     });
     var response = await http.get(uri);
@@ -83,4 +87,19 @@ class ApiManager {
     }
     throw Exception('error');
   }
+
+  static Future<CastModel2> castModel(int movieId) async {
+    var uri = Uri.https(ApiConstant.baseUrl, '/3/movie/550/credits',
+        {'api_key':ApiConstant.apiKey, 'movie_id': ''});
+    var response = await http.get(uri);
+    print(uri);
+    if (response.statusCode == 200) {
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return CastModel2.fromJson(json);
+
+    }
+    throw Exception('error');
+  }
+
 }

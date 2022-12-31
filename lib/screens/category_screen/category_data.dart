@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../apiManager/api_manager.dart';
-import '../../models/CategoryResponse.dart';
-import '../../themes/themes.dart';
+import '../../api_manager/api_manager.dart';
+import '../../models/categoryResponse.dart';
 import 'category_screen_widget.dart';
 
 class CategoryData extends StatelessWidget {

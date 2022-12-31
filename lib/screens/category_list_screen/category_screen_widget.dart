@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/PopularResponse.dart';
+import '../../../models/now_playing.dart';
 import 'package:movies_app/screens/movie_details_screen/movie_details_screen.dart';
 import 'package:movies_app/themes/themes.dart';
 

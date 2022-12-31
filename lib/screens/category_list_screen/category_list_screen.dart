@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/CategoryListResponse.dart';
+import 'package:movies_app/models/categoryListResponse.dart';
 import 'package:movies_app/screens/category_list_screen/category_screen_widget.dart';
+import '../../api_manager/api_manager.dart';
+import '../../models/categoryResponse.dart';
 
-import '../../apiManager/api_manager.dart';
-import '../../models/CategoryResponse.dart';
-import '../../themes/themes.dart';
 
 class CategoryListScreen extends StatelessWidget {
   static const String routeName = 'catList';

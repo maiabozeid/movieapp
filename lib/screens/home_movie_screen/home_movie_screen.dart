@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/apiManager/api_manager.dart';
-import 'package:movies_app/models/PopularResponse.dart';
+import '../../../models/now_playing.dart';
 import 'package:movies_app/screens/home_movie_screen/home_movie_widget.dart';
 import 'package:movies_app/screens/home_movie_screen/popular_tab/popular_tab.dart';
 import 'package:movies_app/screens/home_movie_screen/topRated_tab/topRated_tab.dart';
 import 'package:movies_app/themes/themes.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+import '../../api_manager/api_manager.dart';
+
 
 class HomeMovieScreen extends StatelessWidget {
 
@@ -16,8 +18,8 @@ class HomeMovieScreen extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       child: Column(
         children: [
-          FutureBuilder<PopularResponse>(
-            future: ApiManager.popularMovieData(),
+          FutureBuilder<NowPlaying>(
+            future: ApiManager.nowPlaying(),
             builder:(context, snapshot) {
               if (snapshot.hasError) {
                 return Center(child: Text(snapshot.data?.statusMessage ?? ''));
@@ -58,7 +60,7 @@ class HomeMovieScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'New Releases',
+                    'Upcoming Movies',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(
@@ -82,7 +84,7 @@ class HomeMovieScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Recommended',
+                    'Trending',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(

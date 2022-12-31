@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/PopularResponse.dart';
+import '../../../models/now_playing.dart';
 
 class HomeMovieWidget extends StatelessWidget {
 

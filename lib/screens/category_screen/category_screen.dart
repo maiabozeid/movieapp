@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/CategoryResponse.dart';
+import 'package:movies_app/models/categoryResponse.dart';
 import 'package:movies_app/screens/category_screen/category_data.dart';
 
 

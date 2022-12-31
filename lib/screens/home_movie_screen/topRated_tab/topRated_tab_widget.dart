@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/TopRatedResponse.dart';
+import 'package:movies_app/models/topRatedResponse.dart';
 import 'package:movies_app/screens/movie_details_screen/movie_details_screen.dart';
 
-import '../../../models/PopularResponse.dart';
+import '../../../models/now_playing.dart';
 
 class TopRatedWidget extends StatelessWidget {
   Results results;

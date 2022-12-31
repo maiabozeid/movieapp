@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/PopularResponse.dart';
+import '../../../models/now_playing.dart';
 
-class PopularTabWidget extends StatelessWidget {
+class CastTabWidget extends StatelessWidget {
   Results results;
-  PopularTabWidget(this.results);
+  CastTabWidget(this.results);
 
   @override
   Widget build(BuildContext context) {

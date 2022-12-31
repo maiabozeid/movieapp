@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/PopularResponse.dart';
+import '../../../api_manager/api_manager.dart';
+import '../../../models/now_playing.dart';
 import 'package:movies_app/screens/home_movie_screen/popular_tab/popular_tab_widget.dart';
 import 'package:movies_app/screens/movie_details_screen/movie_details_screen.dart';
 
-import '../../../apiManager/api_manager.dart';
-import '../../../themes/themes.dart';
-
 class PopularTab extends StatefulWidget {
-
-
   @override
   State<PopularTab> createState() => _PopularTabState();
 }
@@ -16,8 +12,8 @@ class PopularTab extends StatefulWidget {
 class _PopularTabState extends State<PopularTab> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<PopularResponse>(
-      future: ApiManager.popularMovieData(),
+    return FutureBuilder<NowPlaying>(
+      future: ApiManager.nowPlaying(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Center(child: Text(snapshot.data?.statusMessage ?? ''));
@@ -33,12 +29,12 @@ class _PopularTabState extends State<PopularTab> {
         return ListView.builder(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) =>
-                InkWell(
-                    onTap: (){
-                      Navigator.pushNamed(context, MovieDetScreen.routeName,arguments: popularMovie!.results![index]);
-                    },
-                    child: PopularTabWidget(popularMovie!.results![index])),
+            itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, MovieDetScreen.routeName,
+                      arguments: popularMovie!.results![index]);
+                },
+                child: CastTabWidget(popularMovie!.results![index])),
             itemCount: popularMovie?.results?.length);
       },
     );
